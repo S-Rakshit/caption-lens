@@ -1,10 +1,10 @@
 const DEFAULTS = {
-  backgroundColor: "#ffffff", backgroundOpacity: 25, fontColor: "#1d1d1f", fontSize: 13,
-  wordBackgroundColor: "#e9f2ff", wordBackgroundOpacity: 25, wordColor: "#0a84ff",
+  backgroundColor: "#ffffff", backgroundOpacity: 25, fontColor: "#ffffff", fontSize: 13,
+  wordBackgroundColor: "#e9f2ff", wordBackgroundOpacity: 25, wordColor: "#ffffff",
   popupBackgroundColor: "#6e6e73", popupBackgroundOpacity: 25, popupFontColor: "#f5f5f7",
   outlineStyle: "none", outlineColor: "#ffffff", outlineOpacity: 0, outlineWidth: 0,
   popupOutlineStyle: "none", popupOutlineColor: "#ffffff", popupOutlineOpacity: 0, popupOutlineWidth: 0,
-  cacheLimit: 1000, minimumWordLength: 3
+  cacheLimit: 100, minimumWordLength: 4
 };
 const form = document.querySelector("#settings-form");
 const toast = document.querySelector("#toast");

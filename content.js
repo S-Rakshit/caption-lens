@@ -1,5 +1,6 @@
 (() => {
   const STOP_WORDS = new Set(`a an the and or but if then than so of in on at to for from by with as into about over after before between through during is am are was were be been being do does did have has had having it its this that these those i you he she we they me him her us them my your his our their who whom what which when where why how not no yes can could should would will shall may might must very just also only own same such each every any all both few more most other some nor too s than`.split(" "));
+  const MIN_CARD_HEIGHT = 44;
   let enabled = false, lastCaption = "", timer, card, wordsEl, notice, popover, settings = {}, drag, resize, resizer, detailWord, detailEntry, detailCounts, pausedByLens = false, hoveringCardBody = false;
   const entries = new Map(), pending = new Map();
 
@@ -177,14 +178,22 @@
     event.preventDefault();
     const rect = card.getBoundingClientRect();
     const width = resize.x ? Math.max(230, Math.min(innerWidth, Math.abs(event.clientX - resize.centerX) * 2)) : rect.width;
-    const height = resize.y ? Math.max(52, Math.min(innerHeight, Math.abs(event.clientY - resize.centerY) * 2)) : rect.height;
-    Object.assign(card.style, { width: `${width}px`, height: `${height}px`, left: `${resize.centerX - width / 2}px`, top: `${resize.centerY - height / 2}px`, bottom: "auto", transform: "none" });
-  }
+    const height = resize.y
+      ? Math.max(MIN_CARD_HEIGHT, Math.min(innerHeight, Math.abs(event.clientY - resize.centerY) * 2))
+      : rect.height;    Object.assign(card.style, { width: `${width}px`, height: `${height}px`, left: `${resize.centerX - width / 2}px`, top: `${resize.centerY - height / 2}px`, bottom: "auto", transform: "none" });
+      }
   function endResize() { if (!resize) return; resize = null; card.classList.remove("caption-lens-resizing"); window.removeEventListener("pointermove", resizeCard, true); window.removeEventListener("pointerup", endResize, true); window.removeEventListener("pointercancel", endResize, true); window.removeEventListener("dragstart", preventResizeDrag, true); saveLayout(); }
   function preventResizeDrag(event) { event.preventDefault(); }
   async function restoreLayout() {
     const layout = (await chrome.runtime.sendMessage({ type: "CAPTION_LENS_GET_LAYOUT" })).layout; if (!layout) return false;
-    Object.assign(card.style, { width: `${layout.width}px`, height: `${layout.height}px`, left: `${layout.left}px`, top: `${layout.top}px`, bottom: "auto", transform: "none" });
+    Object.assign(card.style, {
+      width: `${layout.width}px`,
+      height: `${Math.max(MIN_CARD_HEIGHT, layout.height)}px`,
+      left: `${layout.left}px`,
+      top: `${layout.top}px`,
+      bottom: "auto",
+      transform: "none"
+    });
     return true;
   }
   function normalizeCardPosition() {

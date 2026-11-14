@@ -1,14 +1,54 @@
 #caption-lens-card, #caption-lens-popover { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif; z-index: 2147483647; }
-#caption-lens-card { --caption-lens-color: #1d1d1f; --caption-lens-font-size: 13px; --caption-lens-word-background: #e9f2ff; --caption-lens-word-color: #0a84ff; position: fixed; left: 50%; bottom: max(118px, 15vh); width: min(30vw, calc(100vw - 32px)); min-width: 230px; min-height: 52px; transform: translateX(-50%); padding: 10px 12px; border: 1px solid transparent; border-radius: 18px; background: rgba(255,255,255,.89); color: var(--caption-lens-color); box-shadow: 0 16px 46px rgba(0,0,0,.22); backdrop-filter: blur(22px) saturate(150%); resize: none; overflow: auto; }
-.caption-lens-bar { display: flex; gap: 8px; align-items: flex-start; }
-.caption-lens-words { display: flex; flex: 1; flex-wrap: wrap; gap: 7px; min-height: 28px; }
-.caption-lens-actions { display: flex; gap: 5px; flex: none; }
+
+#caption-lens-card {
+  --caption-lens-color: #1d1d1f;
+  --caption-lens-font-size: 13px;
+  --caption-lens-word-background: #e9f2ff;
+  --caption-lens-word-color: #0a84ff;
+
+  position: fixed;
+  left: 50%;
+  bottom: max(118px, 15vh);
+  width: min(30vw, calc(100vw - 32px));
+  min-width: 230px;
+  min-height: 44px;
+  transform: translateX(-50%);
+  padding: 8px 12px;
+  border: 1px solid transparent;
+  border-radius: 18px;
+  background: rgba(255,255,255,.89);
+  color: var(--caption-lens-color);
+  box-shadow: 0 16px 46px rgba(0,0,0,.22);
+  backdrop-filter: blur(22px) saturate(150%);
+  resize: none;
+  overflow: auto;
+}
+.caption-lens-bar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.caption-lens-words {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+  min-height: 28px;
+}.caption-lens-actions { display: flex; gap: 5px; flex: none; }
 .caption-lens-word { padding: 5px 9px; border: 0; border-radius: 999px; background: var(--caption-lens-word-background); color: var(--caption-lens-word-color); cursor: pointer; font: inherit; font-size: var(--caption-lens-font-size); font-weight: 600; transition: background .15s ease, transform .15s ease; }
 .caption-lens-word:hover { background: #d7e9ff; transform: translateY(-1px); }
 .caption-lens-actions button, .caption-lens-close { border: 0; cursor: pointer; }
-.caption-lens-actions button { width: 24px; height: 24px; border-radius: 50%; background: rgba(60,60,67,.1); color: #555; font-size: 15px; line-height: 20px; }
-.caption-lens-settings { letter-spacing: 1px; font-size: 11px !important; }
-.caption-lens-notice { margin: 7px 1px 0; color: #6e6e73; font-size: 12px; }
+.caption-lens-actions button {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(60,60,67,.1);
+  color: var(--caption-lens-color);
+  font-size: 15px;
+  line-height: 20px;
+}.caption-lens-settings { letter-spacing: 1px; font-size: 11px !important; }
+.caption-lens-notice { margin: 7px 1px 0; color: var(--caption-lens-color); font-size: 12px; }
 .caption-lens-dragging { user-select: none; cursor: grabbing; }
 .caption-lens-resizing, .caption-lens-resizing * { user-select: none !important; -webkit-user-drag: none; }
 .caption-lens-resize-handle { position: absolute; z-index: 3; background: transparent; pointer-events: auto; touch-action: none; -webkit-user-select: none; }
