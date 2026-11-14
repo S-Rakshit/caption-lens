@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "Caption Lens",
+  "version": "0.1.0",
+  "description": "Learn useful words from the current YouTube caption.",
+  "permissions": ["tabs", "storage"],
+  "host_permissions": [
+    "https://www.youtube.com/*",
+    "https://api.dictionaryapi.dev/*",
+    "https://api.datamuse.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Show Caption Lens"
+  },
+  "commands": {
+    "toggle-caption-lens": {
+      "suggested_key": {
+        "default": "Alt+C",
+        "mac": "Alt+C"
+      },
+      "description": "Show or hide Caption Lens"
+    }
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/watch*"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}

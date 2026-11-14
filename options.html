@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Caption Lens Settings</title>
+    <link rel="stylesheet" href="options.css">
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="eyebrow">CAPTION LENS</p>
+        <h1>Appearance & behavior</h1>
+        <p class="intro">Changes are saved only when you choose Save settings.</p>
+      </header>
+
+      <section class="preview" aria-label="Live settings preview">
+        <div class="preview-card" id="preview-card"><span>resilient</span><span>sustainable</span><span>theologians</span><b>×</b></div>
+        <div class="preview-popup" id="preview-popup"><strong>resilient</strong><em>adjective</em><p>Able to recover quickly from difficulty.</p></div>
+      </section>
+
+      <form id="settings-form">
+        <section>
+          <h2>Card</h2>
+          <label>Background color <input name="backgroundColor" type="color"></label>
+          <label>Background opacity <span><input name="backgroundOpacity" type="range" min="0" max="100"><output></output>%</span></label>
+          <label>Text color <input name="fontColor" type="color"></label>
+          <label>Word font size <span><input name="fontSize" type="range" min="11" max="24"><output></output> px</span></label>
+          <h3>Word buttons</h3>
+          <label>Background color <input name="wordBackgroundColor" type="color"></label>
+          <label>Background opacity <span><input name="wordBackgroundOpacity" type="range" min="0" max="100"><output></output>%</span></label>
+          <label>Text color <input name="wordColor" type="color"></label>
+          <h3>Outline</h3>
+          <label>Type <select name="outlineStyle"><option value="none">None</option><option value="solid">Solid</option><option value="dashed">Dashed</option></select></label>
+          <label>Color <input name="outlineColor" type="color"></label>
+          <label>Opacity <span><input name="outlineOpacity" type="range" min="0" max="100"><output></output>%</span></label>
+          <label>Width <span><input name="outlineWidth" type="range" min="0" max="6"><output></output> px</span></label>
+        </section>
+
+        <section>
+          <h2>Definition popup</h2>
+          <label>Background color <input name="popupBackgroundColor" type="color"></label>
+          <label>Background opacity <span><input name="popupBackgroundOpacity" type="range" min="0" max="100"><output></output>%</span></label>
+          <label>Font color <input name="popupFontColor" type="color"></label>
+          <h3>Outline</h3>
+          <label>Type <select name="popupOutlineStyle"><option value="none">None</option><option value="solid">Solid</option><option value="dashed">Dashed</option></select></label>
+          <label>Color <input name="popupOutlineColor" type="color"></label>
+          <label>Opacity <span><input name="popupOutlineOpacity" type="range" min="0" max="100"><output></output>%</span></label>
+          <label>Width <span><input name="popupOutlineWidth" type="range" min="0" max="6"><output></output> px</span></label>
+        </section>
+
+        <section>
+          <h2>Learning & storage</h2>
+          <label>Minimum word length <input name="minimumWordLength" type="number" min="3" max="12"></label>
+          <label>Saved API results <input name="cacheLimit" type="number" min="25" max="1000"></label>
+          <p class="hint">The extension makes no request until you hover or click a word. Results are shared across sessions and the oldest are removed at this limit.</p>
+        </section>
+
+        <section>
+          <h2>Keyboard shortcut</h2>
+          <p class="hint">Default: <kbd>Option</kbd> + <kbd>C</kbd> on macOS; <kbd>Alt</kbd> + <kbd>C</kbd> on Windows. Chrome only permits shortcut changes on its own page: <a href="chrome://extensions/shortcuts" target="_blank">open shortcut settings</a>.</p>
+        </section>
+
+        <div class="actions"><button type="button" class="secondary" id="reset">Set to default</button><button type="submit">Save settings</button></div>
+        <p id="toast" role="status" aria-live="polite"></p>
+      </form>
+    </main>
+    <script src="options.js"></script>
+  </body>
+</html>
